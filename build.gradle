@@ -37,3 +37,8 @@ task wrapper(type: Wrapper) {
 springBoot {
     mainClass = "kaboom.kaboomApplication"
 }
+
+task push(type: Exec) {
+    dependsOn 'build'
+    commandLine 'cf', 'push', 'kaboom', '-p', 'build/libs/spring-app-kaboom.jar'
+}
